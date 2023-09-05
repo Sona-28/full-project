@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option go_package = "github.com/Sona-28/full-project/proto";
+
+message Customer {
+    string id = 1;
+    string name = 2;
+    string password = 3;
+    string email = 4;
+    Address address = 5;
+    Address shippingaddress = 6;
+}
+
+message Address {
+    string country = 1;
+    string street1 = 2;
+    string street2 = 3;
+    string city = 4;
+    string state = 5;
+    string zip = 6;
+}
+
+message CustomerResponse {
+    string message =1;
+}
+
+message SignInRequest {
+    string id = 1;
+    string name = 2;
+}
+
+message Token {
+    string token = 1;
+}
+
+
+service CustomerService {
+    rpc Signup(Customer) returns (CustomerResponse) {
+        
+    }
+    rpc Signin(SignInRequest) returns (Token) {}
+    // rpc GetCustomer(Token) returns (Customer) {}
+    // rpc ProfileManagement(Token) returns (CustomerResponse){}
+}
